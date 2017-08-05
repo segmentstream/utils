@@ -1,8 +1,6 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.bind = bind;
 exports.unbind = unbind;
 var bindName = window.addEventListener ? 'addEventListener' : 'attachEvent';

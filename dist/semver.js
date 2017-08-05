@@ -1,8 +1,6 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.cmp = cmp;
 function cmp(a, b) {
   var pa = a.split('.');

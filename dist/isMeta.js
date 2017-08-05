@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.default = isMeta;
 /**
 * Checks whether a DOM click event should open a link in a new tab.
