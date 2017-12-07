@@ -16,7 +16,7 @@ const crawlers = [
   /getprismatic.com/i,
   /python-requests/i,
   /Twurly/i,
-  /yandex/i,
+  /compatible; yandex/i,
   /browserproxy/i,
   /Monitoring/i,
   /crawler/i,
