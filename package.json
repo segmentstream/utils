@@ -7,8 +7,9 @@
     "dist": "babel ./src --optional runtime --ignore node_modules --out-dir ./dist",
     "prepublish": "npm run dist"
   },
+  "main": "dist/index.js",
   "directories": {
-    "dist": "./dist"
+    "lib": "./dist"
   },
   "files": [
     "dist/*"
