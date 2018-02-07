@@ -14,11 +14,20 @@ var _normalizeString2 = _interopRequireDefault(_normalizeString);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function getQueryParam(name, queryString) {
+  var normalize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
   if (!queryString) {
     queryString = _htmlGlobals2.default.getLocation().search;
   }
   name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
   var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
   var results = regex.exec(queryString);
-  return results === null ? '' : (0, _normalizeString2.default)(decodeURIComponent(results[1].replace(/\+/g, ' ')));
+  if (results === null) {
+    return '';
+  }
+  var output = decodeURIComponent(results[1].replace(/\+/g, ' '));
+  if (normalize) {
+    return (0, _normalizeString2.default)(output);
+  }
+  return output;
 }

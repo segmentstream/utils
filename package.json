@@ -2,13 +2,18 @@
   "name": "driveback-utils",
   "version": "1.0.0",
   "description": "Driveback Utils",
-  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dist": "babel ./src --optional runtime --ignore node_modules --out-dir ./dist",
     "prepublish": "npm run dist",
-    "postinstall": "mv dist/* ./ && rm -rf dist"
+    "postinstall": "npm run dist"
   },
+  "directories": {
+    "dist": "./dist"
+  },
+  "files": [
+    "dist/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/driveback/utils.git"
