@@ -6,5 +6,5 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 exports.default = isPromise;
 function isPromise(result) {
-  return (typeof result === 'undefined' ? 'undefined' : _typeof(result)) === 'object' && result.then && typeof result.then === 'function';
+  return result && (typeof result === 'undefined' ? 'undefined' : _typeof(result)) === 'object' && result.then && typeof result.then === 'function';
 }
