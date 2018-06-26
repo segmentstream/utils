@@ -16,6 +16,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function getQueryParam(name, queryString) {
   var normalize = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
 
+  if (typeof queryString === 'boolean') {
+    normalize = !!queryString;
+    queryString = undefined;
+  }
   if (!queryString) {
     queryString = _htmlGlobals2.default.getLocation().search;
   }
