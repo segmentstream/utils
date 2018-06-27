@@ -1,12 +1,7 @@
 import htmlGlobals from './htmlGlobals';
-import normalizeString from './normalizeString';
 
-export default function getQueryParam(name, queryString, normalize = true) {
-  if (typeof queryString === 'boolean') {
-    normalize = !!queryString;
-    queryString = undefined;
-  }
-  if (!queryString) {
+export default function getQueryParam(name, queryString) {
+  if (typeof queryString !== 'string') {
     queryString = htmlGlobals.getLocation().search;
   } 
   name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -16,8 +11,5 @@ export default function getQueryParam(name, queryString, normalize = true) {
     return '';
   }
   let output = decodeURIComponent(results[1].replace(/\+/g, ' '));
-  if (normalize) {
-    return normalizeString(output);
-  }
   return output;
 }
