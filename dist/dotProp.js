@@ -21,7 +21,7 @@ function getProp(obj, prop) {
   var nestedVar = obj;
   while (keyParts.length > 0) {
     var childKey = keyParts.shift();
-    if (nestedVar.hasOwnProperty(childKey) && nestedVar[childKey] !== undefined) {
+    if (nestedVar !== undefined && nestedVar !== null && nestedVar.hasOwnProperty && nestedVar.hasOwnProperty(childKey) && nestedVar[childKey] !== undefined) {
       nestedVar = nestedVar[childKey];
     } else {
       return undefined;

@@ -13,7 +13,13 @@ export function getProp(obj, prop) {
   let nestedVar = obj;
   while (keyParts.length > 0) {
     const childKey = keyParts.shift();
-    if (nestedVar.hasOwnProperty(childKey) && nestedVar[childKey] !== undefined) {
+    if (
+      nestedVar !== undefined &&
+      nestedVar !== null &&
+      nestedVar.hasOwnProperty && 
+      nestedVar.hasOwnProperty(childKey) &&
+      nestedVar[childKey] !== undefined
+    ) {
       nestedVar = nestedVar[childKey];
     } else {
       return undefined;
