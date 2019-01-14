@@ -1,3 +1,5 @@
+import setAttributes from './helpers/setAttributes';
+
 /**
  * Create an error handler.
  *
@@ -18,12 +20,12 @@ function error(fn, message, img) {
   };
 }
 
-export default function(options, fn) {
+export default function (options, fn) {
   fn = fn || function onPixelLoaded() {};
   const img = new Image();
   img.onerror = error(fn, 'failed to load pixel', img);
   img.onload = fn;
-  img.src = options.src;
+  setAttributes(img, options, ['width', 'height']);
   img.width = 1;
   img.height = 1;
   return img;
