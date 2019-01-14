@@ -1,32 +1,23 @@
-import onLoad from './scriptOnLoad.js';
 import nextTick from 'async/nextTick';
+import onLoad from './scriptOnLoad';
+import setAttributes from './helpers/setAttributes';
+import setOptionsProtocol from './helpers/setOptionsProtocol';
 
-export default function(options, fn) {
+export default function (options, fn) {
   if (!options) throw new Error('Cant load nothing...');
 
-  const https = document.location.protocol === 'https:' ||
-      document.location.protocol === 'chrome-extension:';
-
-  // If you use protocol relative URLs, third-party scripts like Google
-  // Analytics break when testing with `file:` so this fixes that.
-  if (options.href && options.href.indexOf('//') === 0) {
-    options.href = https ? 'https:' + options.href : 'http:' + options.href;
-  }
-
-  // Allow them to pass in different URLs depending on the protocol.
-  if (https && options.https) options.href = options.https;
-  else if (!https && options.http) options.href = options.http;
+  setOptionsProtocol(options, 'href');
 
   // Make the `<link>` element and insert it before the first link on the
   // page, which is guaranteed to exist since this CSS is included on the page.
   const link = document.createElement('link');
-  link.href = options.href;
-  if (options.rel) link.rel = options.rel;
-  if (options.type) link.type = options.type;
+  setAttributes(link, options, ['https', 'http']);
 
+  /* eslint-disable max-len */
   // If we have a fn, attach event handlers, even in IE. Based off of
   // the Third-Party Javascript script loading example:
   // https://github.com/thirdpartyjs/thirdpartyjs-code/blob/master/examples/templates/02/loading-files/index.html
+  /* eslint-enable max-len */
   if (typeof fn === 'function') {
     onLoad(link, fn);
   }
