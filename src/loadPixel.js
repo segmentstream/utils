@@ -1,4 +1,4 @@
-import setAttributes from './helpers/setAttributes';
+import setAttributes from './setAttributes';
 
 /**
  * Create an error handler.

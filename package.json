@@ -8,7 +8,7 @@
     "dist": "npm run build",
     "prepare": "npm run build",
     "preinstall": "npm install -g cpy-cli",
-    "postinstall": "cpy \"./dist/*\" \"./\" --parents"
+    "postinstall": "cpy 'dist/*' . && rimraf dist"
   },
   "main": "dist/index.js",
   "files": [

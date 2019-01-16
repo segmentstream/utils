@@ -1,7 +1,7 @@
 import nextTick from 'async/nextTick';
 import onLoad from './scriptOnLoad';
-import setAttributes from './helpers/setAttributes';
-import setOptionsProtocol from './helpers/setOptionsProtocol';
+import setAttributes from './setAttributes';
+import setOptionsProtocol from './setOptionsProtocol';
 
 export default function (options, fn) {
   if (!options) throw new Error('Cant load nothing...');

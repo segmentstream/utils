@@ -13,7 +13,7 @@ exports.default = function (options, fn) {
   return img;
 };
 
-var _setAttributes = require('./helpers/setAttributes');
+var _setAttributes = require('./setAttributes');
 
 var _setAttributes2 = _interopRequireDefault(_setAttributes);
 

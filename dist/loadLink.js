@@ -40,11 +40,11 @@ var _scriptOnLoad = require('./scriptOnLoad');
 
 var _scriptOnLoad2 = _interopRequireDefault(_scriptOnLoad);
 
-var _setAttributes = require('./helpers/setAttributes');
+var _setAttributes = require('./setAttributes');
 
 var _setAttributes2 = _interopRequireDefault(_setAttributes);
 
-var _setOptionsProtocol = require('./helpers/setOptionsProtocol');
+var _setOptionsProtocol = require('./setOptionsProtocol');
 
 var _setOptionsProtocol2 = _interopRequireDefault(_setOptionsProtocol);
 
