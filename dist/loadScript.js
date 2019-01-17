@@ -8,27 +8,21 @@ exports.default = function (options, fn) {
   // Allow for the simplest case, just passing a `src` string.
   if (typeof options === 'string') options = { src: options };
 
-  var https = document.location.protocol === 'https:' || document.location.protocol === 'chrome-extension:';
-
-  // If you use protocol relative URLs, third-party scripts like Google
-  // Analytics break when testing with `file:` so this fixes that.
-  if (options.src && options.src.indexOf('//') === 0) {
-    options.src = https ? 'https:' + options.src : 'http:' + options.src;
-  }
-
-  // Allow them to pass in different URLs depending on the protocol.
-  if (https && options.https) options.src = options.https;else if (!https && options.http) options.src = options.http;
+  (0, _setOptionsProtocol2.default)(options);
 
   // Make the `<script>` element and insert it before the first script on the
   // page, which is guaranteed to exist since this Javascript is running.
   var script = document.createElement('script');
   script.type = 'text/javascript';
   script.async = true;
+  (0, _setAttributes2.default)(script, options, ['async', 'type', 'http', 'https']);
   script.src = options.src;
 
+  /* eslint-disable max-len */
   // If we have a fn, attach event handlers, even in IE. Based off of
   // the Third-Party Javascript script loading example:
   // https://github.com/thirdpartyjs/thirdpartyjs-code/blob/master/examples/templates/02/loading-files/index.html
+  /* eslint-enable max-len */
   if (typeof fn === 'function') {
     (0, _scriptOnLoad2.default)(script, fn);
   }
@@ -50,12 +44,20 @@ exports.default = function (options, fn) {
   return script;
 };
 
-var _scriptOnLoad = require('./scriptOnLoad.js');
-
-var _scriptOnLoad2 = _interopRequireDefault(_scriptOnLoad);
-
 var _nextTick = require('async/nextTick');
 
 var _nextTick2 = _interopRequireDefault(_nextTick);
+
+var _scriptOnLoad = require('./scriptOnLoad');
+
+var _scriptOnLoad2 = _interopRequireDefault(_scriptOnLoad);
+
+var _setAttributes = require('./helpers/setAttributes');
+
+var _setAttributes2 = _interopRequireDefault(_setAttributes);
+
+var _setOptionsProtocol = require('./helpers/setOptionsProtocol');
+
+var _setOptionsProtocol2 = _interopRequireDefault(_setOptionsProtocol);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

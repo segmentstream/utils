@@ -7,11 +7,17 @@ exports.default = function (options, fn) {
   var img = new Image();
   img.onerror = error(fn, 'failed to load pixel', img);
   img.onload = fn;
-  img.src = options.src;
+  (0, _setAttributes2.default)(img, options, ['width', 'height']);
   img.width = 1;
   img.height = 1;
   return img;
 };
+
+var _setAttributes = require('./helpers/setAttributes');
+
+var _setAttributes2 = _interopRequireDefault(_setAttributes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * Create an error handler.
