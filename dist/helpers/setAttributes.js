@@ -7,7 +7,7 @@ exports.default = function (element, attributes) {
 
   Object.keys(attributes).forEach(function (key) {
     var value = attributes[key];
-    if (!excludeKeys.includes(key)) {
+    if (excludeKeys.indexOf(key) < 0) {
       if (/^data-.*/.test(key)) {
         element.setAttribute(key, value);
       } else {
