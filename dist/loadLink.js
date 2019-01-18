@@ -5,27 +5,18 @@ exports.__esModule = true;
 exports.default = function (options, fn) {
   if (!options) throw new Error('Cant load nothing...');
 
-  var https = document.location.protocol === 'https:' || document.location.protocol === 'chrome-extension:';
-
-  // If you use protocol relative URLs, third-party scripts like Google
-  // Analytics break when testing with `file:` so this fixes that.
-  if (options.href && options.href.indexOf('//') === 0) {
-    options.href = https ? 'https:' + options.href : 'http:' + options.href;
-  }
-
-  // Allow them to pass in different URLs depending on the protocol.
-  if (https && options.https) options.href = options.https;else if (!https && options.http) options.href = options.http;
+  (0, _setOptionsProtocol2.default)(options, 'href');
 
   // Make the `<link>` element and insert it before the first link on the
   // page, which is guaranteed to exist since this CSS is included on the page.
   var link = document.createElement('link');
-  link.href = options.href;
-  if (options.rel) link.rel = options.rel;
-  if (options.type) link.type = options.type;
+  (0, _setAttributes2.default)(link, options, ['https', 'http']);
 
+  /* eslint-disable max-len */
   // If we have a fn, attach event handlers, even in IE. Based off of
   // the Third-Party Javascript script loading example:
   // https://github.com/thirdpartyjs/thirdpartyjs-code/blob/master/examples/templates/02/loading-files/index.html
+  /* eslint-enable max-len */
   if (typeof fn === 'function') {
     (0, _scriptOnLoad2.default)(link, fn);
   }
@@ -41,12 +32,20 @@ exports.default = function (options, fn) {
   return link;
 };
 
-var _scriptOnLoad = require('./scriptOnLoad.js');
-
-var _scriptOnLoad2 = _interopRequireDefault(_scriptOnLoad);
-
 var _nextTick = require('async/nextTick');
 
 var _nextTick2 = _interopRequireDefault(_nextTick);
+
+var _scriptOnLoad = require('./scriptOnLoad');
+
+var _scriptOnLoad2 = _interopRequireDefault(_scriptOnLoad);
+
+var _setAttributes = require('./helpers/setAttributes');
+
+var _setAttributes2 = _interopRequireDefault(_setAttributes);
+
+var _setOptionsProtocol = require('./helpers/setOptionsProtocol');
+
+var _setOptionsProtocol2 = _interopRequireDefault(_setOptionsProtocol);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
