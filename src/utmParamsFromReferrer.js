@@ -1,6 +1,6 @@
 import topDomain from './topDomain';
-import url from './url';
-import { parse } from './queryString';
+import { parse as parseUrl } from './url';
+import { parse as parseQuery } from './queryString';
 
 const engines = [
   { url: 'www.google.', query: 'q', name: 'google' },
@@ -64,6 +64,13 @@ const engines = [
   { url: 'www.yam.com/', query: 'k', name: 'Yam' },
 ];
 
+let ignoreSameDomainCheck = false;
+
+// Set skip topDomain check while unit testing
+export const setIgnoreSameDomainCheck = (value) => {
+  ignoreSameDomainCheck = value;
+};
+
 const getSearchEngine = (referrer) => {
   const engine = engines.find(item => referrer.indexOf(item.url) !== -1);
   return engine || false;
@@ -72,20 +79,21 @@ const getSearchEngine = (referrer) => {
 const normalizeHostName = hostname => hostname.replace(/^www\./i, '');
 
 export default function generateUtmFromReferrer(referrer) {
-  if (topDomain(referrer) === topDomain(window.location.hostname)) return false;
-  const engine = getSearchEngine(referrer);
   const utmParams = {};
-  const urlParams = url(referrer);
-  if (engine) {
-    const params = parse(urlParams.query);
-    utmParams.utm_source = engine.name;
-    utmParams.utm_medium = 'organic';
-    if (params[engine.query]) {
-      utmParams.utm_term = params[engine.query];
+  if (ignoreSameDomainCheck || topDomain(referrer) !== topDomain(window.location.hostname)) {
+    const engine = getSearchEngine(referrer);
+    const urlParams = parseUrl(referrer);
+    if (engine) {
+      const params = parseQuery(urlParams.query);
+      utmParams.source = engine.name;
+      utmParams.medium = 'organic';
+      if (params[engine.query]) {
+        utmParams.term = params[engine.query];
+      }
+    } else if (referrer) {
+      utmParams.source = normalizeHostName(urlParams.hostname);
+      utmParams.medium = 'referral';
     }
-  } else if (referrer) {
-    utmParams.utm_source = normalizeHostName(urlParams.hostname);
-    utmParams.utm_medium = 'referral';
   }
-  return utmParams.length ? utmParams : false;
+  return utmParams;
 }
