@@ -1,6 +1,6 @@
 {
   "name": "@segmentstream/utils",
-  "version": "1.0.7z",
+  "version": "1.0.7",
   "description": "SegmentStream Utils",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
