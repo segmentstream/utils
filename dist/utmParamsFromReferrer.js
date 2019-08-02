@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.default = generateUtmFromReferrer;
 exports.setIgnoreSameDomainCheck = void 0;
 
@@ -15,239 +13,239 @@ var _queryString = require("./queryString");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var engines = [{
-  url: 'www.google.',
+  regex: /www.google./,
   query: 'q',
   name: 'google'
 }, {
-  url: 'yandex.',
+  regex: /yandex..*\/.*\?.*text=/,
   query: 'text',
   name: 'yandex'
 }, {
-  url: 'rambler.ru/search',
+  regex: /rambler.ru\/search/,
   query: 'query',
   name: 'rambler'
 }, {
-  url: 'go.mail.ru/',
+  regex: /go.mail.ru\//,
   query: 'q',
   name: 'mailru'
 }, {
-  url: 'www.bing.com/',
+  regex: /www.bing.com\//,
   query: 'q',
   name: 'bing'
 }, {
-  url: 'search.yahoo.com/search',
+  regex: /search.yahoo.com\/search/,
   query: 'p',
   name: 'yahoo'
 }, {
-  url: 'ru.ask.com/',
+  regex: /ru.ask.com\//,
   query: 'q',
   name: 'ask'
 }, {
-  url: 'search.qip.ru/search',
+  regex: /search.qip.ru\/search/,
   query: 'query',
   name: 'qip'
 }, {
-  url: '360.cn/',
+  regex: /360.cn\//,
   query: 'q',
   name: '360.cn'
 }, {
-  url: 'www.alice.com/',
+  regex: /www.alice.com\//,
   query: 'qs',
   name: 'Alice'
 }, {
-  url: 'aliceadsl.fr',
+  regex: /aliceadsl.fr/,
   query: 'qs',
   name: 'Alice'
 }, {
-  url: 'www.alltheweb.com/',
+  regex: /www.alltheweb.com\//,
   query: 'q',
   name: 'Alltheweb'
 }, {
-  url: 'www.altavista.com/',
+  regex: /www.altavista.com\//,
   query: 'q',
   name: 'Altavista'
 }, {
-  url: 'www.ask.com/',
+  regex: /www.ask.com\//,
   query: 'q',
   name: 'Ask'
 }, {
-  url: 'search.aol.fr',
+  regex: /search.aol.fr/,
   query: 'q',
   name: 'Ask'
 }, {
-  url: 'alicesuche.aol.de',
+  regex: /alicesuche.aol.de/,
   query: 'q',
   name: 'Ask'
 }, {
-  url: 'search.auone.jp/',
+  regex: /search.auone.jp\//,
   query: 'q',
   name: 'Auone'
 }, {
-  url: 'isearch.avg.com',
+  regex: /isearch.avg.com/,
   query: 'q',
   name: 'Avg'
 }, {
-  url: 'search.babylon.com',
+  regex: /search.babylon.com/,
   query: 'q',
   name: 'Babylon'
 }, {
-  url: 'www.baidu.com/',
+  regex: /www.baidu.com\//,
   query: 'wd',
   name: 'Baidu'
 }, {
-  url: 'biglobe.ne.jp',
+  regex: /biglobe.ne.jp/,
   query: 'q',
   name: 'Biglobe'
 }, {
-  url: 'search.centrum.cz/',
+  regex: /search.centrum.cz\//,
   query: 'q',
   name: 'Centrum.cz'
 }, {
-  url: 'search.comcast.net',
+  regex: /search.comcast.net/,
   query: 'q',
   name: 'Comcast'
 }, {
-  url: 'search.conduit.com',
+  regex: /search.conduit.com/,
   query: 'q',
   name: 'Conduit'
 }, {
-  url: 'www.cnn.com/SEARCH/',
+  regex: /www.cnn.com\/SEARCH\//,
   query: 'q',
   name: 'CNN'
 }, {
-  url: 'www.daum.net/',
+  regex: /www.daum.net\//,
   query: 'q',
   name: 'Daum'
 }, {
-  url: 'www.ekolay.net/',
+  regex: /www.ekolay.net\//,
   query: 'q',
   name: 'Ekolay'
 }, {
-  url: 'www.eniro.se/',
+  regex: /www.eniro.se\//,
   query: 'search_word',
   name: 'Eniro'
 }, {
-  url: 'www.globo.com/busca/',
+  regex: /www.globo.com\/busca\//,
   query: 'q',
   name: 'Globo'
 }, {
-  url: 'goo.ne.jp',
+  regex: /goo.ne.jp/,
   query: 'MT',
   name: 'goo.ne'
 }, {
-  url: 'www.haosou.com/s',
+  regex: /www.haosou.com\/s/,
   query: 'q',
   name: 'haosou.com'
 }, {
-  url: 'search.incredimail.com',
+  regex: /search.incredimail.com/,
   query: 'q',
   name: 'Incredimail'
 }, {
-  url: 'www.kvasir.no/',
+  regex: /www.kvasir.no\//,
   query: 'q',
   name: 'Kvasir'
 }, {
-  url: 'www.lycos.com/',
+  regex: /www.lycos.com\//,
   query: 'q',
   name: 'Lycos'
 }, {
-  url: 'search.lycos.',
+  regex: /search.lycos./,
   query: 'query',
   name: 'Lycos'
 }, {
-  url: 'www.mamma.com/',
+  regex: /www.mamma.com\//,
   query: 'query',
   name: 'Mamma'
 }, {
-  url: 'www.msn.com/',
+  regex: /www.msn.com\//,
   query: 'q',
   name: 'MSN'
 }, {
-  url: 'www.mynet.com/',
+  regex: /www.mynet.com\//,
   query: 'q',
   name: 'Mynet'
 }, {
-  url: 'najdi.si',
+  regex: /najdi.si/,
   query: 'q',
   name: 'Najdi'
 }, {
-  url: 'www.naver.com/',
+  regex: /www.naver.com\//,
   query: 'query',
   name: 'Naver'
 }, {
-  url: 'search.netscape.com/',
+  regex: /search.netscape.com\//,
   query: 'query',
   name: 'Netscape'
 }, {
-  url: 'szukaj.onet.pl',
+  regex: /szukaj.onet.pl/,
   query: 'qt',
   name: 'ONET'
 }, {
-  url: 'www.ozu.es/',
+  regex: /www.ozu.es\//,
   query: 'q',
   name: 'Ozu'
 }, {
-  url: 'rakuten.co.jp',
+  regex: /rakuten.co.jp/,
   query: 'qt',
   name: 'Rakuten'
 }, {
-  url: 'search-results.com',
+  regex: /search-results.com/,
   query: 'q',
   name: 'Search-results'
 }, {
-  url: 'search.smt.docomo.ne.jp',
+  regex: /search.smt.docomo.ne.jp/,
   query: 'MT',
   name: 'search.smt.docomo'
 }, {
-  url: 'sesam.no/',
+  regex: /sesam.no\//,
   query: 'q',
   name: 'Sesam'
 }, {
-  url: 'www.seznam.cz/',
+  regex: /www.seznam.cz\//,
   query: 'q',
   name: 'Seznam'
 }, {
-  url: 'www.so.com/s',
+  regex: /www.so.com\/s/,
   query: 'q',
   name: 'So.com'
 }, {
-  url: 'www.sogou.com/',
+  regex: /www.sogou.com\//,
   query: 'query',
   name: 'Sogou'
 }, {
-  url: 'www.startsiden.no/sok',
+  regex: /www.startsiden.no\/sok/,
   query: 'q',
   name: 'Startsiden'
 }, {
-  url: 'www.szukacz.pl/',
+  regex: /www.szukacz.pl\//,
   query: 'q',
   name: 'Szukacz'
 }, {
-  url: 'buscador.terra.com.br',
+  regex: /buscador.terra.com.br/,
   query: 'query',
   name: 'Terra'
 }, {
-  url: 'search.tut.by/',
+  regex: /search.tut.by\//,
   query: 'query',
   name: 'Tut.by'
 }, {
-  url: 'search.ukr.net/',
+  regex: /search.ukr.net\//,
   query: 'q',
   name: 'Ukr'
 }, {
-  url: 'search.virgilio.it/',
+  regex: /search.virgilio.it\//,
   query: 'qs',
   name: 'Virgilio'
 }, {
-  url: 'www.voila.fr/',
+  regex: /www.voila.fr\//,
   query: 'rdata',
   name: 'Voila'
 }, {
-  url: 'www.wp.pl/',
+  regex: /www.wp.pl\//,
   query: 'szukaj',
   name: 'Wirtulana Polska'
 }, {
-  url: 'www.yam.com/',
+  regex: /www.yam.com\//,
   query: 'k',
   name: 'Yam'
 }];
@@ -261,7 +259,7 @@ exports.setIgnoreSameDomainCheck = setIgnoreSameDomainCheck;
 
 var getSearchEngine = function getSearchEngine(referrer) {
   var engine = engines.find(function (item) {
-    return referrer.indexOf(item.url) !== -1;
+    return item.regex.test(referrer);
   });
   return engine || false;
 };

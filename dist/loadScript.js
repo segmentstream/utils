@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.default = _default;
 
 var _nextTick = _interopRequireDefault(require("async/nextTick"));

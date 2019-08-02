@@ -1,16 +1,12 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.parse = parse;
 exports.stringify = stringify;
 
 var _each = _interopRequireDefault(require("./each.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 var pattern = /(\w+)\[(\d+)\]/;
 /**
@@ -90,7 +86,7 @@ function stringify(obj) {
   if (!obj) return '';
   var pairs = [];
   (0, _each.default)(obj, function (key, value) {
-    if (_typeof(value) === 'object' && value.length) {
+    if (typeof value === 'object' && value.length) {
       for (var i = 0; i < value.length; ++i) {
         pairs.push(encode(key + '[' + i + ']') + '=' + encode(value[i]));
       }

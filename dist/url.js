@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.parse = parse;
 
 /**
@@ -21,7 +19,7 @@ function port(protocol) {
       return 443;
 
     default:
-      return location.port;
+      return window.location.port;
   }
 }
 
@@ -30,12 +28,12 @@ function parse(url) {
   a.href = url;
   return {
     href: a.href,
-    host: a.host || location.host,
+    host: a.host || window.location.host,
     port: a.port === '0' || a.port === '' ? port(a.protocol) : a.port,
     hash: a.hash,
-    hostname: a.hostname || location.hostname,
+    hostname: a.hostname || window.location.hostname,
     pathname: a.pathname.charAt(0) !== '/' ? '/' + a.pathname : a.pathname,
-    protocol: !a.protocol || a.protocol === ':' ? location.protocol : a.protocol,
+    protocol: !a.protocol || a.protocol === ':' ? window.location.protocol : a.protocol,
     search: a.search,
     query: a.search.slice(1)
   };

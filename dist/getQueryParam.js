@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.default = getQueryParam;
 
 var _htmlGlobals = _interopRequireDefault(require("./htmlGlobals"));
@@ -14,7 +12,7 @@ function getQueryParam(name, queryString) {
     queryString = _htmlGlobals.default.getLocation().search;
   }
 
-  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+  name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
   var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
   var results = regex.exec(queryString);
 

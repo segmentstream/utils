@@ -10,17 +10,21 @@
     "prepare-tests": "rm -rf ./build && mkdir ./build",
     "browserify-tests": "browserify test/index.test.js -t babelify --debug | exorcist --base=./build build/tests.js.map > build/tests.js"
   },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/driveback/utils.git"
+    "url": "git+https://github.com/segmentstream/utils.git"
   },
   "author": "Driveback LLC",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/driveback/utils/issues"
+    "url": "https://github.com/segmentstream/utils/issues"
   },
-  "homepage": "https://github.com/driveback/utils#readme",
+  "homepage": "https://github.com/segmentstream/utils#readme",
   "dependencies": {
     "async": "^3.1.0",
     "js-cookie": "^2.2.0"
@@ -31,25 +35,26 @@
     ]
   },
   "devDependencies": {
-    "core-js": "^3.1.4",
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/register": "^7.5.5",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
     "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "babel-eslint": "^10.0.2",
+    "babelify": "^10.0.0",
+    "browserify": "^16.3.0",
     "chai": "^4.2.0",
-    "mocha": "^6.2.0",
+    "core-js": "^3.1.4",
+    "exorcist": "^1.0.1",
     "karma": "^4.2.0",
     "karma-babel-preprocessor": "^8.0.1",
     "karma-browserify": "^6.1.0",
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.5",
     "karma-phantomjs-launcher": "^1.0.4",
+    "mocha": "^6.2.0",
+    "pre-commit": "^1.2.2",
     "puppeteer": "^1.19.0",
-    "browserify": "^16.3.0",
-    "babelify": "^10.0.0",
-    "exorcist": "^1.0.1",
-    "babel-eslint": "^10.0.2",
     "standard": "^13.1.0"
   },
   "keywords": [
@@ -59,13 +64,16 @@
     "exit": true,
     "recursive": true,
     "require": [
-      "@babel/polyfill",
       "@babel/register"
     ]
   },
   "standard": {
     "envs": [
       "mocha"
+    ],
+    "ignore": [
+      "dist/*",
+      "build/*"
     ],
     "parser": "babel-eslint"
   }

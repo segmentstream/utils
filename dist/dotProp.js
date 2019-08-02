@@ -1,13 +1,9 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.getProp = getProp;
 exports.setProp = setProp;
 exports.default = void 0;
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _keyToArray(key) {
   key = key.trim();
@@ -29,7 +25,7 @@ function getProp(obj, prop) {
   while (keyParts.length > 0) {
     var childKey = keyParts.shift();
 
-    if (nestedVar !== undefined && nestedVar !== null && nestedVar.hasOwnProperty && nestedVar.hasOwnProperty(childKey) && nestedVar[childKey] !== undefined) {
+    if (nestedVar !== undefined && nestedVar !== null && nestedVar.hasOwnProperty && {}.hasOwnProperty.call(nestedVar, childKey) && nestedVar[childKey] !== undefined) {
       nestedVar = nestedVar[childKey];
     } else {
       return undefined;
@@ -40,7 +36,7 @@ function getProp(obj, prop) {
 }
 
 function setProp(obj, prop, value) {
-  if (_typeof(obj) !== 'object' || typeof prop !== 'string') {
+  if (typeof obj !== 'object' || typeof prop !== 'string') {
     return;
   }
 
@@ -49,7 +45,7 @@ function setProp(obj, prop, value) {
   for (var i = 0; i < keyParts.length; i++) {
     var p = keyParts[i];
 
-    if (_typeof(obj[p]) !== 'object') {
+    if (typeof obj[p] !== 'object') {
       obj[p] = {};
     }
 

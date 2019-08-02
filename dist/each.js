@@ -1,13 +1,11 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.default = _default;
 
 function _default(obj, fn) {
   for (var key in obj) {
-    if (obj.hasOwnProperty(key)) {
+    if ({}.hasOwnProperty.call(obj, key)) {
       fn(key, obj[key]);
     }
   }

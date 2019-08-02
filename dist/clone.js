@@ -1,14 +1,12 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.default = clone;
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function clone(obj) {
-  var preserveFunctions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+function clone(obj, preserveFunctions) {
+  if (preserveFunctions === void 0) {
+    preserveFunctions = false;
+  }
 
   if (!obj) {
     return obj;
@@ -18,7 +16,7 @@ function clone(obj) {
     return JSON.parse(JSON.stringify(obj));
   }
 
-  switch (_typeof(obj)) {
+  switch (typeof obj) {
     case 'object':
       if (!Array.isArray(obj)) {
         if (obj instanceof Date) {
@@ -29,7 +27,7 @@ function clone(obj) {
         var _copy = {};
 
         for (var key in obj) {
-          if (obj.hasOwnProperty(key)) {
+          if ({}.hasOwnProperty.call(obj, key)) {
             _copy[key] = clone(obj[key], preserveFunctions);
           }
         }

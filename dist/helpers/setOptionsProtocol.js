@@ -1,18 +1,19 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.default = void 0;
 
 // set http / https protocol as source of element options
-var _default = function _default(options) {
-  var urlKey = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'src';
+var _default = function _default(options, urlKey) {
+  if (urlKey === void 0) {
+    urlKey = 'src';
+  }
+
   var https = document.location.protocol === 'https:' || document.location.protocol === 'chrome-extension:'; // If you use protocol relative URLs, third-party scripts like Google
   // Analytics break when testing with `file:` so this fixes that.
 
   if (options[urlKey] && options[urlKey].indexOf('//') === 0) {
-    options[urlKey] = https ? "https:".concat(options[urlKey]) : "http:".concat(options[urlKey]);
+    options[urlKey] = https ? "https:" + options[urlKey] : "http:" + options[urlKey];
   } // Allow them to pass in different URLs depending on the protocol.
 
 

@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.default = _default;
 
 var _setAttributes = _interopRequireDefault(require("./helpers/setAttributes"));
@@ -30,6 +28,8 @@ function error(fn, message, img) {
 
 function _default(options, fn) {
   fn = fn || function onPixelLoaded() {};
+  /* eslint-disable-next-line */
+
 
   var img = new Image();
   img.onerror = error(fn, 'failed to load pixel', img);

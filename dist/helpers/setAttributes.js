@@ -1,12 +1,13 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.default = void 0;
 
-var _default = function _default(element, attributes) {
-  var excludeKeys = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+var _default = function _default(element, attributes, excludeKeys) {
+  if (excludeKeys === void 0) {
+    excludeKeys = [];
+  }
+
   Object.keys(attributes).forEach(function (key) {
     var value = attributes[key];
 
