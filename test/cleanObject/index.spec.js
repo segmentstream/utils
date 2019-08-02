@@ -29,7 +29,7 @@ const expectedCleanedObject = {
   }
 }
 
-describe('# cleanObject', () => {
+describe('#cleanObject', () => {
   it('should successfull clean object', async () => {
     const cleanedObject = cleanObject(exampleObject)
     assert.deepEqual(expectedCleanedObject, cleanedObject)

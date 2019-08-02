@@ -14,7 +14,7 @@ const expectedUrlObject = {
   search: '?utm_source=vk&utm_medium=cpc&utm_campaign=retergeting1&utm_content=1212&utm_term=site'
 }
 
-describe('# url', () => {
+describe('#url', () => {
   it('should get right utmParams', async () => {
     const urlObject = parse(url)
     assert.deepEqual(expectedUrlObject, urlObject)

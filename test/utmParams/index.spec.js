@@ -10,7 +10,7 @@ const expectedUTMs = {
   term: 'site'
 }
 
-describe('# utmParams', () => {
+describe('#utmParams', () => {
   it('should get right utmParams', async () => {
     const UTMs = utmParams(url)
     assert.deepEqual(expectedUTMs, UTMs)
