@@ -22,5 +22,13 @@ export default [
   {
     in: 'https://yandex.ru/searchapp?&clid=2218572&l10n=ru-RU&lr=2&noreask=1&serp_only=1&tab_id=serp&text=сетка рабица&uuid=baef5bfb6dc44706bbc44e95e371f311',
     out: { medium: 'organic', source: 'yandex', term: 'сетка рабица' }
+  },
+  {
+    in: 'https://yandex.ru/maps/213/moscow/?ll=37.622504%2C55.753215&z=10',
+    out: { medium: 'referral', source: 'yandex.ru' }
+  },
+  {
+    in: 'https://yandex.ru/maps/213/moscow/?ll=37.637192%2C55.778816&mode=search&sll=37.622504%2C55.753215&sspn=1.972046%2C0.704783&text=%D0%9F%D0%B8%D1%86%D1%86%D0%B0&z=12',
+    out: { medium: 'organic', source: 'yandex', term: 'Пицца' }
   }
 ]
