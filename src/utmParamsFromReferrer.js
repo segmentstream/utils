@@ -4,7 +4,10 @@ import { parse as parseQuery } from './queryString'
 
 const engines = [
   { url: 'www.google.', query: 'q', name: 'google' },
-  { url: 'yandex.', query: 'text', name: 'yandex' },
+  { url: 'yandex.ru/clck/jsredir', query: 'text', name: 'yandex' },
+  { url: 'yandex.ru/search', query: 'text', name: 'yandex' },
+  { url: 'yandex.ru/images/search', query: 'text', name: 'yandex' },
+  { url: 'yandex.ru/yandsearch', query: 'text', name: 'yandex' },
   { url: 'rambler.ru/search', query: 'query', name: 'rambler' },
   { url: 'go.mail.ru/', query: 'q', name: 'mailru' },
   { url: 'www.bing.com/', query: 'q', name: 'bing' },

@@ -1,10 +1,13 @@
 import { assert } from 'chai'
-import utmParamsFromReferrer, { setIgnoreSameDomainCheck } from '../../dist/utmParamsFromReferrer'
+import utmParamsFromReferrer, { setIgnoreSameDomainCheck } from '../../src/utmParamsFromReferrer'
+import referrers from './referrers.stub'
 
-describe('#src/jobs-scheduler', () => {
-  it('should publish messages with correct pattern and projects data to pubsub', async () => {
+describe('# utmParamsFromReferrer', () => {
+  it('should genetate right utmParams', async () => {
     setIgnoreSameDomainCheck(true)
-    const a = utmParamsFromReferrer('http://aaaaa.aa')
-    assert.ok(a)
+    for (const referrer of referrers) {
+      const utmParams = utmParamsFromReferrer(referrer.in)
+      assert.deepEqual(referrer.out, utmParams)
+    }
   })
 })
