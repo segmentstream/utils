@@ -1,9 +1,11 @@
-'use strict';
+"use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.default = normalizeString;
+
 function normalizeString(str) {
   if (!str) return '';
-
   return String(str).trim().toLowerCase();
 }

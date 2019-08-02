@@ -1,10 +1,9 @@
-'use strict';
+"use strict";
 
-exports.__esModule = true;
-
-exports.default = function (el, fn) {
-  return el.addEventListener ? addEventListener(el, fn) : attachEvent(el, fn);
-};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _default;
 
 /**
  * Add event listener to `el`, `fn()`.
@@ -13,7 +12,6 @@ exports.default = function (el, fn) {
  * @param {Function} fn
  * @api private
  */
-
 function addEventListener(el, fn) {
   el.addEventListener('load', function (_, e) {
     fn(null, e);
@@ -24,7 +22,6 @@ function addEventListener(el, fn) {
     fn(err);
   }, false);
 }
-
 /**
  * Attach event.
  *
@@ -33,10 +30,11 @@ function addEventListener(el, fn) {
  * @api private
  */
 
+
 function attachEvent(el, fn) {
   el.attachEvent('onreadystatechange', function (e) {
-    if (!/complete|loaded/.test(el.readyState)) return;
-    // IE8 FIX
+    if (!/complete|loaded/.test(el.readyState)) return; // IE8 FIX
+
     if (el.readyState === 'loaded') {
       setTimeout(function () {
         fn(null, e);
@@ -50,4 +48,8 @@ function attachEvent(el, fn) {
     err.event = e || window.event;
     fn(err);
   });
+}
+
+function _default(el, fn) {
+  return el.addEventListener ? addEventListener(el, fn) : attachEvent(el, fn);
 }

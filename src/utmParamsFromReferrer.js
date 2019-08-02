@@ -1,6 +1,6 @@
-import topDomain from './topDomain';
-import { parse as parseUrl } from './url';
-import { parse as parseQuery } from './queryString';
+import topDomain from './topDomain'
+import { parse as parseUrl } from './url'
+import { parse as parseQuery } from './queryString'
 
 const engines = [
   { url: 'www.google.', query: 'q', name: 'google' },
@@ -61,39 +61,39 @@ const engines = [
   { url: 'search.virgilio.it/', query: 'qs', name: 'Virgilio' },
   { url: 'www.voila.fr/', query: 'rdata', name: 'Voila' },
   { url: 'www.wp.pl/', query: 'szukaj', name: 'Wirtulana Polska' },
-  { url: 'www.yam.com/', query: 'k', name: 'Yam' },
-];
+  { url: 'www.yam.com/', query: 'k', name: 'Yam' }
+]
 
-let ignoreSameDomainCheck = false;
+let ignoreSameDomainCheck = false
 
 // Set skip topDomain check while unit testing
 export const setIgnoreSameDomainCheck = (value) => {
-  ignoreSameDomainCheck = value;
-};
+  ignoreSameDomainCheck = value
+}
 
 const getSearchEngine = (referrer) => {
-  const engine = engines.find(item => referrer.indexOf(item.url) !== -1);
-  return engine || false;
-};
+  const engine = engines.find(item => referrer.indexOf(item.url) !== -1)
+  return engine || false
+}
 
-const normalizeHostName = hostname => hostname.replace(/^www\./i, '');
+const normalizeHostName = hostname => hostname.replace(/^www\./i, '')
 
-export default function generateUtmFromReferrer(referrer) {
-  const utmParams = {};
+export default function generateUtmFromReferrer (referrer) {
+  const utmParams = {}
   if (ignoreSameDomainCheck || topDomain(referrer) !== topDomain(window.location.hostname)) {
-    const engine = getSearchEngine(referrer);
-    const urlParams = parseUrl(referrer);
+    const engine = getSearchEngine(referrer)
+    const urlParams = parseUrl(referrer)
     if (engine) {
-      const params = parseQuery(urlParams.query);
-      utmParams.source = engine.name;
-      utmParams.medium = 'organic';
+      const params = parseQuery(urlParams.query)
+      utmParams.source = engine.name
+      utmParams.medium = 'organic'
       if (params[engine.query]) {
-        utmParams.term = params[engine.query];
+        utmParams.term = params[engine.query]
       }
     } else if (referrer) {
-      utmParams.source = normalizeHostName(urlParams.hostname);
-      utmParams.medium = 'referral';
+      utmParams.source = normalizeHostName(urlParams.hostname)
+      utmParams.medium = 'referral'
     }
   }
-  return utmParams;
+  return utmParams
 }

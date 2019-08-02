@@ -1,10 +1,15 @@
-'use strict';
+"use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.cmp = cmp;
+exports.default = void 0;
+
 function cmp(a, b) {
   var pa = a.split('.');
   var pb = b.split('.');
+
   for (var i = 0; i < 3; i++) {
     var na = Number(pa[i]);
     var nb = Number(pb[i]);
@@ -13,7 +18,11 @@ function cmp(a, b) {
     if (!isNaN(na) && isNaN(nb)) return 1;
     if (isNaN(na) && !isNaN(nb)) return -1;
   }
+
   return 0;
 }
 
-exports.default = { cmp: cmp };
+var _default = {
+  cmp: cmp
+};
+exports.default = _default;

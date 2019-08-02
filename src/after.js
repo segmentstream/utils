@@ -6,11 +6,11 @@
  * @param {Function} fn
  */
 
-export default function(times, fn) {
-  let timeLeft = times;
-  return function afterAll() {
+export default function (times, fn) {
+  let timeLeft = times
+  return function afterAll () {
     if (--timeLeft < 1) {
-      return fn.apply(this, arguments);
+      return fn.apply(this, arguments)
     }
-  };
+  }
 }

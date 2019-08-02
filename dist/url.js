@@ -1,7 +1,10 @@
-'use strict';
+"use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.parse = parse;
+
 /**
  * Return default port for `protocol`.
  *
@@ -13,8 +16,10 @@ function port(protocol) {
   switch (protocol) {
     case 'http:':
       return 80;
+
     case 'https:':
       return 443;
+
     default:
       return location.port;
   }

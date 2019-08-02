@@ -1,5 +1,5 @@
-import {parse} from './url.js';
-import cookie from 'js-cookie';
+import { parse } from './url.js'
+import cookie from 'js-cookie'
 
 /**
  * Levels returns all levels of the given url.
@@ -8,28 +8,28 @@ import cookie from 'js-cookie';
  * @return {Array}
  * @api public
  */
-function getLevels(url) {
-  const host = parse(url).hostname;
-  const parts = host.split('.');
-  const last = parts[parts.length - 1];
-  const levels = [];
+function getLevels (url) {
+  const host = parse(url).hostname
+  const parts = host.split('.')
+  const last = parts[parts.length - 1]
+  const levels = []
 
   // Ip address.
   if (parts.length === 4 && parseInt(last, 10) === last) {
-    return levels;
+    return levels
   }
 
   // Localhost.
   if (parts.length <= 1) {
-    return levels;
+    return levels
   }
 
   // Create levels.
   for (let i = parts.length - 2; i >= 0; --i) {
-    levels.push(parts.slice(i).join('.'));
+    levels.push(parts.slice(i).join('.'))
   }
 
-  return levels;
+  return levels
 }
 
 /**
@@ -63,22 +63,22 @@ function getLevels(url) {
  * @api public
  */
 
-export default function topDomain(url) {
-  const levels = getLevels(url);
+export default function topDomain (url) {
+  const levels = getLevels(url)
 
   // Lookup the real top level one.
   for (let i = 0; i < levels.length; ++i) {
-    const cname = '__tld__';
-    const domain = levels[i];
+    const cname = '__tld__'
+    const domain = levels[i]
     const opts = {
-      domain: '.' + domain,
-    };
-    cookie.set(cname, 1, opts);
+      domain: '.' + domain
+    }
+    cookie.set(cname, 1, opts)
     if (cookie.get(cname)) {
-      cookie.set(cname, null, opts);
-      return domain;
+      cookie.set(cname, null, opts)
+      return domain
     }
   }
 
-  return '';
+  return ''
 }

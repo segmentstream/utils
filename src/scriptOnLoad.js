@@ -6,15 +6,15 @@
  * @api private
  */
 
-function addEventListener(el, fn) {
+function addEventListener (el, fn) {
   el.addEventListener('load', (_, e) => {
-    fn(null, e);
-  }, false);
+    fn(null, e)
+  }, false)
   el.addEventListener('error', (e) => {
-    const err = new Error('script error "' + el.src + '"');
-    err.event = e;
-    fn(err);
-  }, false);
+    const err = new Error('script error "' + el.src + '"')
+    err.event = e
+    fn(err)
+  }, false)
 }
 
 /**
@@ -25,27 +25,27 @@ function addEventListener(el, fn) {
  * @api private
  */
 
-function attachEvent(el, fn) {
+function attachEvent (el, fn) {
   el.attachEvent('onreadystatechange', (e) => {
-    if (!/complete|loaded/.test(el.readyState)) return;
+    if (!/complete|loaded/.test(el.readyState)) return
     // IE8 FIX
     if (el.readyState === 'loaded') {
       setTimeout(() => {
-        fn(null, e);
-      }, 500);
+        fn(null, e)
+      }, 500)
     } else {
-      fn(null, e);
+      fn(null, e)
     }
-  });
+  })
   el.attachEvent('onerror', (e) => {
-    const err = new Error('failed to load the script "' + el.src + '"');
-    err.event = e || window.event;
-    fn(err);
-  });
+    const err = new Error('failed to load the script "' + el.src + '"')
+    err.event = e || window.event
+    fn(err)
+  })
 }
 
-export default function(el, fn) {
+export default function (el, fn) {
   return el.addEventListener
-      ? addEventListener(el, fn)
-      : attachEvent(el, fn);
+    ? addEventListener(el, fn)
+    : attachEvent(el, fn)
 }

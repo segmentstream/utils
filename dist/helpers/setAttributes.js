@@ -1,12 +1,15 @@
 "use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
-exports.default = function (element, attributes) {
+var _default = function _default(element, attributes) {
   var excludeKeys = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-
   Object.keys(attributes).forEach(function (key) {
     var value = attributes[key];
+
     if (excludeKeys.indexOf(key) < 0) {
       if (/^data-.*/.test(key)) {
         element.setAttribute(key, value);
@@ -16,3 +19,5 @@ exports.default = function (element, attributes) {
     }
   });
 };
+
+exports.default = _default;

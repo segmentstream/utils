@@ -1,7 +1,10 @@
-'use strict';
+"use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.default = ipToLong;
+
 function ipToLong(ip) {
   var ipl = 0;
   ip.split('.').forEach(function (octet) {

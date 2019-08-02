@@ -1,7 +1,7 @@
-export default function(obj, prop) {
+export default function (obj, prop) {
   try {
-    delete obj[prop];
+    delete obj[prop]
   } catch (e) {
-    obj[prop] = undefined;
+    obj[prop] = undefined
   }
 }

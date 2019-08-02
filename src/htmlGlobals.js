@@ -1,13 +1,13 @@
 export default {
   getDocument: () => {
-    return window.document;
+    return window.document
   },
 
   getLocation: () => {
-    return window.location;
+    return window.location
   },
 
   getNavigator: () => {
-    return window.navigator;
-  },
-};
+    return window.navigator
+  }
+}

@@ -1,4 +1,4 @@
-import setAttributes from './helpers/setAttributes';
+import setAttributes from './helpers/setAttributes'
 
 /**
  * Create an error handler.
@@ -10,23 +10,24 @@ import setAttributes from './helpers/setAttributes';
  * @api private
  */
 
-function error(fn, message, img) {
+function error (fn, message, img) {
   return (e) => {
-    e = e || window.event;
-    const err = new Error(message);
-    err.event = e;
-    err.source = img;
-    fn(err);
-  };
+    e = e || window.event
+    const err = new Error(message)
+    err.event = e
+    err.source = img
+    fn(err)
+  }
 }
 
 export default function (options, fn) {
-  fn = fn || function onPixelLoaded() {};
-  const img = new Image();
-  img.onerror = error(fn, 'failed to load pixel', img);
-  img.onload = fn;
-  setAttributes(img, options, ['width', 'height']);
-  img.width = 1;
-  img.height = 1;
-  return img;
+  fn = fn || function onPixelLoaded () {}
+  /* eslint-disable-next-line */
+  const img = new Image()
+  img.onerror = error(fn, 'failed to load pixel', img)
+  img.onload = fn
+  setAttributes(img, options, ['width', 'height'])
+  img.width = 1
+  img.height = 1
+  return img
 }

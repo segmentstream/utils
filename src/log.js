@@ -1,10 +1,10 @@
-import noop from './noop';
+import noop from './noop'
 
-const MESSAGE = 'message';
-const WARNING = 'warning';
-const ERROR = 'error';
+const MESSAGE = 'message'
+const WARNING = 'warning'
+const ERROR = 'error'
 
-function log(msg, type) {
+function log (msg, type) {
   /* eslint-disable */
   console.log = console.log || noop;
   console.warn = console.warn || console.log;
@@ -19,8 +19,8 @@ function log(msg, type) {
   /* eslint-enable */
 }
 
-log.MESSAGE = MESSAGE;
-log.WARNING = WARNING;
-log.ERROR = ERROR;
+log.MESSAGE = MESSAGE
+log.WARNING = WARNING
+log.ERROR = ERROR
 
-export default log;
+export default log

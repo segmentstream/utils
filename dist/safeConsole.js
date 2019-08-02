@@ -1,6 +1,8 @@
-'use strict';
+"use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.log = log;
 exports.warn = warn;
 exports.info = info;
@@ -8,17 +10,14 @@ exports.error = error;
 exports.group = group;
 exports.groupEnd = groupEnd;
 
-var _noop = require('./noop');
-
-var _noop2 = _interopRequireDefault(_noop);
+var _noop = _interopRequireDefault(require("./noop"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-window.console.log = window.console.log || _noop2.default;
+window.console.log = window.console.log || _noop.default;
 window.console.info = window.console.info || window.console.log;
 window.console.warn = window.console.warn || window.console.log;
 window.console.error = window.console.error || window.console.warn;
-
 var browserSupportsGroups = !!window.console.group;
 
 function log(message, style) {
@@ -37,6 +36,7 @@ function error(errorMsg) {
   if (window.__DEV_MODE__) {
     throw errorMsg;
   }
+
   window.console.error(errorMsg);
 }
 

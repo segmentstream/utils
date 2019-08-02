@@ -1,13 +1,13 @@
-'use strict';
+"use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.default = topDomain;
 
-var _url = require('./url.js');
+var _url = require("./url.js");
 
-var _jsCookie = require('js-cookie');
-
-var _jsCookie2 = _interopRequireDefault(_jsCookie);
+var _jsCookie = _interopRequireDefault(require("js-cookie"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22,26 +22,24 @@ function getLevels(url) {
   var host = (0, _url.parse)(url).hostname;
   var parts = host.split('.');
   var last = parts[parts.length - 1];
-  var levels = [];
+  var levels = []; // Ip address.
 
-  // Ip address.
   if (parts.length === 4 && parseInt(last, 10) === last) {
     return levels;
-  }
+  } // Localhost.
 
-  // Localhost.
+
   if (parts.length <= 1) {
     return levels;
-  }
+  } // Create levels.
 
-  // Create levels.
+
   for (var i = parts.length - 2; i >= 0; --i) {
     levels.push(parts.slice(i).join('.'));
   }
 
   return levels;
 }
-
 /**
  * Get the top domain.
  *
@@ -73,19 +71,22 @@ function getLevels(url) {
  * @api public
  */
 
-function topDomain(url) {
-  var levels = getLevels(url);
 
-  // Lookup the real top level one.
+function topDomain(url) {
+  var levels = getLevels(url); // Lookup the real top level one.
+
   for (var i = 0; i < levels.length; ++i) {
     var cname = '__tld__';
     var domain = levels[i];
     var opts = {
       domain: '.' + domain
     };
-    _jsCookie2.default.set(cname, 1, opts);
-    if (_jsCookie2.default.get(cname)) {
-      _jsCookie2.default.set(cname, null, opts);
+
+    _jsCookie.default.set(cname, 1, opts);
+
+    if (_jsCookie.default.get(cname)) {
+      _jsCookie.default.set(cname, null, opts);
+
       return domain;
     }
   }
