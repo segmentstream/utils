@@ -19,7 +19,7 @@ const exampleObject = {
   }
 }
 
-const expextedCleanedObject = {
+const expectedCleanedObject = {
   c: false,
   e: {
     c: false,
@@ -32,6 +32,6 @@ const expextedCleanedObject = {
 describe('# cleanObject', () => {
   it('should successfull clean object', async () => {
     const cleanedObject = cleanObject(exampleObject)
-    assert.deepEqual(expextedCleanedObject, cleanedObject)
+    assert.deepEqual(expectedCleanedObject, cleanedObject)
   })
 })
