@@ -1,6 +1,6 @@
 {
   "name": "@segmentstream/utils",
-  "version": "1.0.7z",
+  "version": "1.0.8",
   "description": "SegmentStream Utils",
   "scripts": {
     "lint": "standard",
