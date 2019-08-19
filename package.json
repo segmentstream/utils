@@ -6,7 +6,7 @@
     "lint": "standard",
     "lint-fix": "standard --fix",
     "test": "npm run prepare-tests && npm run browserify-tests && karma start",
-    "dist": "babel ./src --out-dir ./dist && cp ./{package.json,README.md} dist",
+    "dist": "babel ./src --out-dir ./dist && cp ./{package.json,README.md,.npmrc} dist",
     "link": "npm run dist && cd ./dist && npm link",
     "publish": "npm run dist && cd ./dist && npm publish",
     "prepare-tests": "rm -rf ./build && mkdir ./build",
