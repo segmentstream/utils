@@ -1,8 +1,8 @@
-import { getProp } from './dotProp';
+import { getProp } from './dotProp'
 
-export default function getVarValue(variable, source) {
+export default function getVarValue (variable, source) {
   if (variable.type === 'constant') {
-    return variable.value;
+    return variable.value
   }
-  return getProp(source, variable.value);
+  return getProp(source, variable.value)
 }

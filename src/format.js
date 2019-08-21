@@ -2,7 +2,7 @@
  * toString.
  */
 
-const toString = window.JSON ? JSON.stringify : String;
+const toString = window.JSON ? JSON.stringify : String
 
 /**
  * Formatters
@@ -11,8 +11,8 @@ const toString = window.JSON ? JSON.stringify : String;
 const formatters = {
   o: toString,
   s: String,
-  d: parseInt,
-};
+  d: parseInt
+}
 
 /**
  * Format the given `str`.
@@ -23,13 +23,13 @@ const formatters = {
  * @api public
  */
 
-export default function format(str) {
-  const args = [].slice.call(arguments, 1);
-  let j = 0;
+export default function format (str) {
+  const args = [].slice.call(arguments, 1)
+  let j = 0
 
   return str.replace(/%([a-z])/gi, (_, f) => {
     return formatters[f]
-        ? formatters[f](args[j++])
-        : _ + f;
-  });
+      ? formatters[f](args[j++])
+      : _ + f
+  })
 }

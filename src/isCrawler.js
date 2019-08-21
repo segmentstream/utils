@@ -23,10 +23,10 @@ const crawlers = [
   /Qwantify/i,
   /Yahoo! Slurp/i,
   /pinterest/i
-];
+]
 
-export default function isCrawler(userAgent) {
-  return crawlers.some(function(crawler) {
-    return crawler.test(userAgent);
-  });
+export default function isCrawler (userAgent) {
+  return crawlers.some(function (crawler) {
+    return crawler.test(userAgent)
+  })
 }

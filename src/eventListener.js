@@ -1,6 +1,6 @@
-const bindName = window.addEventListener ? 'addEventListener' : 'attachEvent';
-const unbindName = window.removeEventListener ? 'removeEventListener' : 'detachEvent';
-const prefix = bindName !== 'addEventListener' ? 'on' : '';
+const bindName = window.addEventListener ? 'addEventListener' : 'attachEvent'
+const unbindName = window.removeEventListener ? 'removeEventListener' : 'detachEvent'
+const prefix = bindName !== 'addEventListener' ? 'on' : ''
 
 /**
  * Bind `el` event `type` to `fn`.
@@ -13,9 +13,9 @@ const prefix = bindName !== 'addEventListener' ? 'on' : '';
  * @api public
  */
 
-export function bind(el, type, fn, capture) {
-  el[bindName](prefix + type, fn, capture || false);
-  return fn;
+export function bind (el, type, fn, capture) {
+  el[bindName](prefix + type, fn, capture || false)
+  return fn
 }
 
 /**
@@ -29,7 +29,7 @@ export function bind(el, type, fn, capture) {
  * @api public
  */
 
-export function unbind(el, type, fn, capture) {
-  el[unbindName](prefix + type, fn, capture || false);
-  return fn;
+export function unbind (el, type, fn, capture) {
+  el[unbindName](prefix + type, fn, capture || false)
+  return fn
 }

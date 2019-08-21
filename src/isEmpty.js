@@ -1,6 +1,6 @@
-export default function isEmpty(obj) {
+export default function isEmpty (obj) {
   if (obj.constructor === Object && Object.keys(obj).length === 0) {
-    return true;
+    return true
   }
-  return false;
+  return false
 }

@@ -1,15 +1,15 @@
-import htmlGlobals from './htmlGlobals';
+import htmlGlobals from './htmlGlobals'
 
-export default function getQueryParam(name, queryString) {
+export default function getQueryParam (name, queryString) {
   if (typeof queryString !== 'string') {
-    queryString = htmlGlobals.getLocation().search;
-  } 
-  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-  const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-  const results = regex.exec(queryString);
-  if (results === null) {
-    return '';
+    queryString = htmlGlobals.getLocation().search
   }
-  let output = decodeURIComponent(results[1].replace(/\+/g, ' '));
-  return output;
+  name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]')
+  const regex = new RegExp('[\\?&]' + name + '=([^&#]*)')
+  const results = regex.exec(queryString)
+  if (results === null) {
+    return ''
+  }
+  const output = decodeURIComponent(results[1].replace(/\+/g, ' '))
+  return output
 }

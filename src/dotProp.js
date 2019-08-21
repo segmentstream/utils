@@ -1,48 +1,48 @@
-function _keyToArray(key) {
-  key = key.trim();
+function _keyToArray (key) {
+  key = key.trim()
   if (key === '') {
-    return [];
+    return []
   }
-  key = key.replace(/\[(\w+)\]/g, '.$1');
-  key = key.replace(/^\./, '');
-  return key.split('.');
+  key = key.replace(/\[(\w+)\]/g, '.$1')
+  key = key.replace(/^\./, '')
+  return key.split('.')
 }
 
-export function getProp(obj, prop) {
-  const keyParts = _keyToArray(prop);
-  let nestedVar = obj;
+export function getProp (obj, prop) {
+  const keyParts = _keyToArray(prop)
+  let nestedVar = obj
   while (keyParts.length > 0) {
-    const childKey = keyParts.shift();
+    const childKey = keyParts.shift()
     if (
       nestedVar !== undefined &&
       nestedVar !== null &&
-      nestedVar.hasOwnProperty && 
-      nestedVar.hasOwnProperty(childKey) &&
+      nestedVar.hasOwnProperty &&
+      {}.hasOwnProperty.call(nestedVar, childKey) &&
       nestedVar[childKey] !== undefined
     ) {
-      nestedVar = nestedVar[childKey];
+      nestedVar = nestedVar[childKey]
     } else {
-      return undefined;
+      return undefined
     }
   }
-  return nestedVar;
+  return nestedVar
 }
 
-export function setProp(obj, prop, value) {
+export function setProp (obj, prop, value) {
   if (typeof obj !== 'object' || typeof prop !== 'string') {
-    return;
+    return
   }
-  const keyParts = _keyToArray(prop);
+  const keyParts = _keyToArray(prop)
   for (let i = 0; i < keyParts.length; i++) {
-    const p = keyParts[i];
+    const p = keyParts[i]
     if (typeof obj[p] !== 'object') {
-      obj[p] = {};
+      obj[p] = {}
     }
     if (i === keyParts.length - 1) {
-      obj[p] = value;
+      obj[p] = value
     }
-    obj = obj[p];
+    obj = obj[p]
   }
 }
 
-export default { getProp, setProp };
+export default { getProp, setProp }
