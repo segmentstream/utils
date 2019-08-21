@@ -1,4 +1,3 @@
-import nextTick from 'async/nextTick'
 import onLoad from './scriptOnLoad'
 import setAttributes from './helpers/setAttributes'
 import setOptionsProtocol from './helpers/setOptionsProtocol'
@@ -37,7 +36,7 @@ export default function (options, fn) {
       !!(navigator.userAgent.match(/Trident/) ||
       navigator.userAgent.match(/rv:11/))) {
     // Append after event listeners are attached for IE.
-    nextTick(addScriptToHead)
+    setTimeout(addScriptToHead, 0)
   } else {
     addScriptToHead()
   }

@@ -1,4 +1,3 @@
-import nextTick from 'async/nextTick'
 import onLoad from './scriptOnLoad'
 import setAttributes from './helpers/setAttributes'
 import setOptionsProtocol from './helpers/setOptionsProtocol'
@@ -22,11 +21,11 @@ export default function (options, fn) {
     onLoad(link, fn)
   }
 
-  nextTick(() => {
+  setTimeout(() => {
     // Append after event listeners are attached for IE.
     const firstLink = document.getElementsByTagName('link')[0]
     firstLink.parentNode.insertBefore(link, firstLink)
-  })
+  }, 0)
 
   // Return the link element in case they want to do anything special, like
   // give it an ID or attributes.

@@ -1,4 +1,3 @@
-import nextTick from 'async/nextTick'
 import onLoad from './scriptOnLoad'
 import setAttributes from './helpers/setAttributes'
 import setOptionsProtocol from './helpers/setOptionsProtocol'
@@ -29,10 +28,10 @@ export default function (options, fn) {
     onLoad(iframe, fn)
   }
 
-  nextTick(() => {
+  setTimeout(() => {
     // Append after event listeners are attached for IE.
     document.body.appendChild(iframe)
-  })
+  }, 0)
 
   // Return the iframe element in case they want to do anything special, like
   // give it an ID or attributes.
