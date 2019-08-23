@@ -4,6 +4,7 @@ import { parse as parseQuery } from './queryString'
 
 const engines = [
   { regex: /www.google./, query: 'q', name: 'google' },
+  { regex: /^https?:\/\/(www\.)?yandex\.([a-z]{2,3})\/?$/, query: 'text', name: 'yandex' },
   { regex: /yandex..*\/.*\?.*text=/, query: 'text', name: 'yandex' },
   { regex: /rambler.ru\/search/, query: 'query', name: 'rambler' },
   { regex: /go.mail.ru\//, query: 'q', name: 'mailru' },
