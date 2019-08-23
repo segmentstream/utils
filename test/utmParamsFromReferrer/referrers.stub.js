@@ -4,16 +4,44 @@ export default [
     out: { medium: 'organic', source: 'yandex' }
   },
   {
+    in: 'https://yandex.ru/',
+    out: { medium: 'organic', source: 'yandex' }
+  },
+  {
+    in: 'https://www.yandex.ru/',
+    out: { medium: 'organic', source: 'yandex' }
+  },
+  {
+    in: 'https://yandex.ru/znatoki/question/leisure/kogda_v_letual_skidki_1f490265/?utm_source=yandex&utm_medium=wizard',
+    out: { medium: 'referral', source: 'yandex.ru' }
+  },
+  {
+    in: 'https://yandex.by/',
+    out: { medium: 'organic', source: 'yandex' }
+  },
+  {
     in: 'https://yandex.ua/',
-    out: { medium: 'referral', source: 'yandex.ua' }
+    out: { medium: 'organic', source: 'yandex' }
+  },
+  {
+    in: 'https://yandex.ru',
+    out: { medium: 'organic', source: 'yandex' }
+  },
+  {
+    in: 'https://yandex.kz/',
+    out: { medium: 'organic', source: 'yandex' }
+  },
+  {
+    in: 'http://yandex.ru/',
+    out: { medium: 'organic', source: 'yandex' }
+  },
+  {
+    in: 'https://yabs.yandex.ru/count/',
+    out: { medium: 'referral', source: 'yabs.yandex.ru' }
   },
   {
     in: 'https://e.mail.ru/',
     out: { medium: 'referral', source: 'e.mail.ru' }
-  },
-  {
-    in: 'http://www.yandex.ru/',
-    out: { medium: 'referral', source: 'yandex.ru' }
   },
   {
     in: 'https://yandex.ru/search/?lr=213&clid=2224022&text=швеллер',
