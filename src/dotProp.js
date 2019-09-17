@@ -9,6 +9,8 @@ function _keyToArray (key) {
 }
 
 export function getProp (obj, prop) {
+  if (!prop) { return }
+
   const keyParts = _keyToArray(prop)
   let nestedVar = obj
   while (keyParts.length > 0) {
