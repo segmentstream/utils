@@ -58,5 +58,13 @@ export default [
   {
     in: 'https://yandex.ru/maps/213/moscow/?ll=37.637192%2C55.778816&mode=search&sll=37.622504%2C55.753215&sspn=1.972046%2C0.704783&text=%D0%9F%D0%B8%D1%86%D1%86%D0%B0&z=12',
     out: { medium: 'organic', source: 'yandex', term: 'Пицца' }
+  },
+  {
+    in: 'https://duckduckgo.com/?q=phrase&kp=-1&kl=us-en&ia=web',
+    out: { medium: 'organic', source: 'duckduckgo', term: 'phrase' }
+  },
+  {
+    in: 'https://ampbyexample-com.cdn.ampproject.org/v/s/ampbyexample.com/?amp_js_v=6',
+    out: { medium: 'organic', source: 'google' }
   }
 ]
