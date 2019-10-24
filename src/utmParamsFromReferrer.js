@@ -4,9 +4,11 @@ import { parse as parseQuery } from './queryString'
 
 const engines = [
   { regex: /www.google./, query: 'q', name: 'google' },
+  { regex: /^https?:\/\/.*ampproject.(org|net)/, query: 'q', name: 'google' },
+  { regex: /^https?:\/\/.*duckduckgo\.com./, query: 'q', name: 'duckduckgo' },
+  { regex: /^https?:\/\/(www\.)?rambler\.ru/, query: 'query', name: 'rambler' },
   { regex: /^https?:\/\/(www\.)?yandex\.([a-z]{2,3})\/?$/, query: 'text', name: 'yandex' },
   { regex: /yandex..*\/.*\?.*text=/, query: 'text', name: 'yandex' },
-  { regex: /rambler.ru\/search/, query: 'query', name: 'rambler' },
   { regex: /go.mail.ru\//, query: 'q', name: 'mailru' },
   { regex: /www.bing.com\//, query: 'q', name: 'bing' },
   { regex: /search.yahoo.com\/search/, query: 'p', name: 'yahoo' },
