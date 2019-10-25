@@ -6,7 +6,7 @@ const engines = [
   { regex: /www.google./, query: 'q', name: 'google' },
   { regex: /^https?:\/\/.*ampproject.(org|net)/, query: 'q', name: 'google' },
   { regex: /^https?:\/\/.*duckduckgo\.com./, query: 'q', name: 'duckduckgo' },
-  { regex: /^https?:\/\/(www\.)?rambler\.ru/, query: 'query', name: 'rambler' },
+  { regex: /^https?:\/\/(www\.|nova\.)?rambler\.ru/, query: 'query', name: 'rambler' },
   { regex: /^https?:\/\/(www\.)?yandex\.([a-z]{2,3})\/?$/, query: 'text', name: 'yandex' },
   { regex: /yandex..*\/.*\?.*text=/, query: 'text', name: 'yandex' },
   { regex: /go.mail.ru\//, query: 'q', name: 'mailru' },
