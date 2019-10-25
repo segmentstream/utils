@@ -66,5 +66,13 @@ export default [
   {
     in: 'https://ampbyexample-com.cdn.ampproject.org/v/s/ampbyexample.com/?amp_js_v=6',
     out: { medium: 'organic', source: 'google' }
+  },
+  {
+    in: 'https://nova.rambler.ru/search?query=search',
+    out: { medium: 'organic', source: 'rambler', term: 'search' }
+  },
+  {
+    in: 'https://rambler.ru/search?query=segmentstream&utm_source=head&utm_campaign=self_promo&utm_medium=form&utm_content=search&_openstat=UmFtYmxlcl9NYWluOzs7',
+    out: { medium: 'organic', source: 'rambler', term: 'segmentstream' }
   }
 ]
